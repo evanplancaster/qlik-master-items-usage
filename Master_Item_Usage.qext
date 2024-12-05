@@ -1,0 +1,15 @@
+{
+	"name": "Master_Item_Usage",
+	"description": "Extension useful for finding answers to the questions 'Where, if anywhere, is this master item used?' and doing bulk deletes of master items.",
+	"icon": "bar-chart-horizontal",
+	"type": "visualization",
+	"version": "1.0.0",
+	"author": "Evan Lancaster",
+	"homepage": "",
+	"keywords": "qlik-sense, visualization",
+	"license": "testing",
+	"repository": "",
+	"dependencies": {
+		"qlik-sense": ">=3.0.x"
+	}
+}

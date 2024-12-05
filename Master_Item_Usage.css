@@ -1,0 +1,85 @@
+.master_item_usage td, .master_item_usage th, .master_item_nonusage td, .master_item_nonusage th  {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  -moz-user-select: all;
+  -webkit-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+}
+
+.master_item_usage th, .master_item_nonusage th {
+  position: sticky;
+  top: 40px;
+  background-color: darkgray;
+  color: white;
+}
+
+.master_item_usage tr:nth-child(even), .master_item_nonusage tr:nth-child(even){background-color: #f2f2f2;}
+
+.master_item_usage tr:hover, .master_item_nonusage tr:hover {background-color: #ddd;}
+
+.master_item_usage .searchbar, .master_item_nonusage .searchbar {
+    position: sticky;
+    top: 45px;
+}
+
+.master_item_usage .searchbar textarea, .master_item_nonusage .searchbar textarea {
+  display: inline-block;
+  resize: none;
+  border-color: transparent;
+  padding: 5px;
+  margin: 2px 5px;
+  width: 85%;
+}
+
+.master_item_usage .searchbar .lui-icon, .master_item_nonusage .searchbar .lui-icon {
+  display: inline-block;
+  width: 5%;
+  color: #595959;
+  vertical-align: 75%;
+}
+
+.master_item_usage a:link, a:visited, .master_item_nonusage a:link, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.master_item_usage table, .master_item_nonusage table {
+  table-layout: fixed;
+  min-width: 600px;
+}
+
+.master_item_usage .word-break, .master_item_nonusage .word-break {
+    word-break: break-all;
+}
+
+#usage_tabs .lui-tabset {
+    position: sticky;
+    top: 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+	height: 38px;
+}
+
+.master_item_usage .lui-tab, .master_item_nonusage .lui-tab {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.master_item_usage .lui-tab:hover, .master_item_nonusage .lui-tab:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.master_item_usage .sort_icon_div, .master_item_nonusage .sort_icon_div {
+    float:right;
+}
+
+
+.ext-tab-content {
+  padding: 0px;
+}
+
+.ext-table-div {
+  padding: 5px 0px;
+}

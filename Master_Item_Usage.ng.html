@@ -1,0 +1,259 @@
+<div qv-extension style="height: 100%; position: relative; overflow: auto;" class="ng-scope">
+	<lui-tab-view id="usage_tabs">
+		<lui-tabset>
+			<lui-tab ref="inUse">Master Items In Use</lui-tab>
+			<lui-tab ref="notInUse">Master Items Not In Use</lui-tab>
+			<lui-tab ref="howTo">How-To/Purpose</lui-tab>	
+		</lui-tabset>
+		<lui-tab-content ref="inUse" class="ext-tab-content">
+			<div class="master_item_usage">
+				<table class="master_item_usage" border="1">
+					<thead>
+					<tr>
+						<th>
+						<span ng-click="sortBy('sheetId')">Sheet ID &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'sheetId')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('sheetId')" ng-show="propertyName !== 'sheetId'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('sheetId')" ng-show="propertyName === 'sheetId' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('sheetId')" ng-show="propertyName === 'sheetId' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_sheetId" hidden>
+								<textarea rows="1" ng-model="searchResults.sheetId"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.sheetId=''" ng-show="searchResults.sheetId.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('sheetName')">Sheet Name &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'sheetName')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('sheetName')" ng-show="propertyName !== 'sheetName'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('sheetName')" ng-show="propertyName === 'sheetName' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('sheetName')" ng-show="propertyName === 'sheetName' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_sheetName" hidden>
+								<textarea rows="1" ng-model="searchResults.sheetName"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.sheetName=''" ng-show="searchResults.sheetName.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('sheetStatus')">Sheet Status &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'sheetStatus')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('sheetStatus')" ng-show="propertyName !== 'sheetStatus'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('sheetStatus')" ng-show="propertyName === 'sheetStatus' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('sheetStatus')" ng-show="propertyName === 'sheetStatus' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_sheetStatus" hidden>
+								<textarea rows="1" ng-model="searchResults.sheetStatus"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.sheetStatus=''" ng-show="searchResults.sheetStatus.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('vizId')">Object ID &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'vizId')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('vizId')" ng-show="propertyName !== 'vizId'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('vizId')" ng-show="propertyName === 'vizId' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('vizId')" ng-show="propertyName === 'vizId' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_vizId" hidden>
+								<textarea rows="1" ng-model="searchResults.vizId"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.vizId=''" ng-show="searchResults.vizId.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('vizType')">Object Type &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'vizType')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('vizType')" ng-show="propertyName !== 'vizType'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('vizType')" ng-show="propertyName === 'vizType' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('vizType')" ng-show="propertyName === 'vizType' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_vizType" hidden>
+								<textarea rows="1" ng-model="searchResults.vizType"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.vizType=''" ng-show="searchResults.vizType.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('name')">Master Item Name &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'name')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('name')" ng-show="propertyName !== 'name'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('name')" ng-show="propertyName === 'name' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('name')" ng-show="propertyName === 'name' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_name" hidden>
+								<textarea rows="1" ng-model="searchResults.name"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.name=''" ng-show="searchResults.name.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('id')">Master Item ID &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'id')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('id')" ng-show="propertyName !== 'id'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('id')" ng-show="propertyName === 'id' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('id')" ng-show="propertyName === 'id' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_id" hidden>
+								<textarea rows="1" ng-model="searchResults.id"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.id=''" ng-show="searchResults.id.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('type')">Master Item Type &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'type')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('type')" ng-show="propertyName !== 'type'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('type')" ng-show="propertyName === 'type' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('type')" ng-show="propertyName === 'type' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_type" hidden>
+								<textarea rows="1" ng-model="searchResults.type"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.type=''" ng-show="searchResults.type.length"></span>
+							</div>
+						</th>
+		<!--
+						<th>
+							Master Item Path
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('masterItemPath')" ng-show="propertyName !== 'masterItemPath'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('masterItemPath')" ng-show="propertyName === 'masterItemPath' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('masterItemPath')" ng-show="propertyName === 'masterItemPath' && reverse === true"></span>
+							</div>
+						</th>
+		-->
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="item in masterItemsData | filter:inUseFilter | orderBy:propertyName:reverse track by $index ">
+						<td ng-click="copy(item.sheetId)">
+							{{item.sheetId}}
+						</td>
+						<td ng-click="copy(item.sheetName)" class="word-break">
+							{{item.sheetName}}
+						</td>
+						<td ng-click="copy(item.sheetStatus)" class="word-break">
+							{{item.sheetStatus}}
+						</td>
+						<td ng-click="copy(item.vizId)">
+							{{item.vizId}}
+						</td>
+						<td ng-click="copy(item.vizType)">
+							{{item.vizType}}
+						</td>
+						<td ng-click="copy(item.name)" class="word-break">
+							{{item.name}}
+						</td>
+						<td ng-click="copy(item.id)">
+							{{item.id}}
+						</td>
+						<td ng-click="copy(item.type)">
+							{{item.type}}
+						</td>
+		<!--				
+						<td ng-click="copy(item.masterItemPath)">
+							{{item.masterItemPath | limitTo : -20 : -10}}
+						</td>
+		-->
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</lui-tab-content>
+		
+		<lui-tab-content ref="notInUse" class="ext-tab-content">
+			<div class="master_item_nonusage">
+				<table class="master_item_nonusage" border="1">
+					<thead>
+					<tr>
+						<th>
+							<span ng-click="sortBy('name')">Master Item Name &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'name')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('name')" ng-show="propertyName !== 'name'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('name')" ng-show="propertyName === 'name' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('name')" ng-show="propertyName === 'name' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_name" hidden>
+								<textarea rows="1" ng-model="searchResults.name"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.name=''" ng-show="searchResults.name.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('id')">Master Item ID &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'id')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('id')" ng-show="propertyName !== 'id'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('id')" ng-show="propertyName === 'id' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('id')" ng-show="propertyName === 'id' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_id" hidden>
+								<textarea rows="1" ng-model="searchResults.id"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.id=''" ng-show="searchResults.id.length"></span>
+							</div>
+						</th>
+						<th>
+							<span ng-click="sortBy('type')">Master Item Type &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, 'type')"></span> 
+							<div class="sort_icon_div">
+								<span class="lui-icon  lui-icon--up-down" ng-click="sortBy('type')" ng-show="propertyName !== 'type'"></span>
+								<span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy('type')" ng-show="propertyName === 'type' && reverse === false"></span>
+								<span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy('type')" ng-show="propertyName === 'type' && reverse === true"></span>
+							</div>
+							<div class="searchbar searchbar_type" hidden>
+								<textarea rows="1" ng-model="searchResults.type"></textarea>
+								<span class="lui-icon lui-icon--close" ng-click="searchResults.type=''" ng-show="searchResults.type.length"></span>
+							</div>
+						</th>
+						<th>
+							<div ng-model="toBeDeleted">
+								<button class="lui-button lui-button--danger" ng-disabled="!itemsSelected()" ng-click="deleteMasterItems()">
+									Delete Selected
+								</button>
+								<button class="lui-button lui-button--info" ng-click="toggleAllChecks()">
+									<span ng-show="anyChecked">Clear All</span>
+									<span ng-show="!anyChecked">Select All</span>
+								</button>
+							</div>
+						</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="item in masterItemsData | filter:notInUseFilter | orderBy:propertyName:reverse track by $index ">
+						<td ng-click="copy(item.name)" class="word-break">
+							{{item.name}}
+						</td>
+						<td ng-click="copy(item.id)">
+							{{item.id}}
+						</td>
+						<td ng-click="copy(item.type)">
+							{{item.type}}
+						</td>
+						<td>
+							<input type="checkbox" aria-label="item.id" ng-model="item.deleteMe" ng-change="itemsSelected()"/>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</lui-tab-content>
+		<lui-tab-content ref="howTo" class="ext-tab-content">
+			<br>
+			<h2>Purpose of this extension</h2>
+			<p>Want to know every place a master dimension or measure is used? Want to know whether a master dimension or measure is even used at all?
+				This extension will quickly answer those questions for you.</p>
+			<br>
+			<h2>How To Use</h2>
+			<p>You can use the icons at the top of each column to search and sort by sheet name/ID, object type/ID, or master item name/ID/type.</p>
+			<p>Use the tabs at the top to flip between used and unused master items.</p>
+			<p>On the tab for "Master Items Not In Use", you can individually or bulk select items, then delete all selected master items with the click of a button.</p>
+		</lui-tab-content>
+	</lui-tab-view>
+
+<!--
+	<div class="lui-modal-background"></div>
+	<div class="lui-dialog" style="width: 400px;">
+		<div class="lui-dialog__header">
+			<div class="lui-dialog__title">Dialog title</div>
+		</div>
+		<div class="lui-dialog__body">
+			You are about to delete the following master items. This action cannot be undone. Please confirm.
+		</div>
+		<div class="lui-dialog__footer">
+			<button class="lui-button  lui-dialog__button">Cancel</button>
+			<button class="lui-button  lui-dialog__button close-button">Delete</button>
+		</div>
+	</div>
+-->
+</div>
