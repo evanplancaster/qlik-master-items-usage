@@ -12,7 +12,6 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html", "./lib/
 		template: html,
         controller: ['$scope', function ($scope) {
             
-			
 			//Initialize variables
 			const app = qlik.currApp(this);
 			console.log(app);
@@ -275,7 +274,7 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html", "./lib/
 							viz.mainObjId = viz.name;				//this is the Object ID, stored as the OG for reference
 							viz.sheetId = sheet.qInfo.qId;			//this is the Sheet ID
 							viz.sheetName = sheet.qMeta.title;		//This is the Sheet Title
-							viz.sheetStatus = sheetStatus(sheet);	//This is the sheet's publish status
+							viz.sheetStatus = utils.sheetStatus(sheet);	//This is the sheet's publish status
 							
 							
 							//console.log(viz);
