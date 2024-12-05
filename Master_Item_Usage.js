@@ -1,4 +1,4 @@
-define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], function(qlik, cssContent, html) {
+define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html", "./lib/utilities"], function(qlik, cssContent, html, utils) {
     "use strict";
 
     // Add CSS to the head
@@ -17,7 +17,6 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], functi
 			const app = qlik.currApp(this);
 			console.log(app);
             
-			var masterItemRecords = [];
 			$scope.propertyName = 'sheetName';
 			$scope.reverse = false;
 			$scope.searchResults = {
@@ -31,65 +30,6 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], functi
 				"sheetStatus": ""
 			};
 
-            
-			//This function gets every path in an object. We do this so we can find all references to "qLibraryId", which
-			//is the identifying marker for master items, as well as to examine expressions to find any references to 
-			//master measures. This also allows us to find any visualizations that are actually master visualizations,
-			//which we'll need to know so we can dig into the main visualization's properties.
-			function getPath(jsonObj, currentPath = '') {
-				const paths = [];
-				//console.log(jsonObj);
-				
-				for (const key in jsonObj) {
-					if (jsonObj.hasOwnProperty(key)) {
-						const newPath = currentPath ? `${currentPath}.${key}` : key;
-
-						if (typeof jsonObj[key] === 'object' && jsonObj[key] !== null) {
-							// Recurse into nested objects
-							paths.push(...getPath(jsonObj[key], newPath));
-						} else {
-							// Add the path if it's a leaf node
-							paths.push(newPath);
-						}
-					}
-				}
-				//console.log(paths);
-				return paths;
-			}
-
-			//This function gets the values of object paths. This allows us to get an expression or the id of a master item.
-			function getValuesFromPaths(jsonObj, pathsArr) {
-				const results = {};
-
-				pathsArr.forEach(path => {
-					const keys = path.split('.');
-					let value = jsonObj;
-
-					for (let key of keys) {
-						if (value && key in value) {
-							value = value[key];
-						} else {
-							value = null;
-							break;
-						}
-					}
-
-					if (value !== "") {results[path] = value;}
-				});
-
-				return results;
-			}
-			
-			var sheetStatus = function (sheetProps) {
-				if (sheetProps.qMeta.approved) {
-					return "Public";
-				} else if (sheetProps.qMeta.published) {
-					return "Community";
-				} else {
-					return "Private";
-				}
-			};
-			
 			async function getPropTree(objId) {
 				return app.getObjectProperties(objId)
 				.then(propsResult => {
@@ -104,12 +44,12 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], functi
 						return getPropTree(treeResult.qProperty.qExtendsId);
 					//****this processes all the dumb vizlib stuff	
 					} else if (treeResult.qProperty.visualization === 'VizlibSheetMenuPlus' || treeResult.qProperty.visualization === 'VizlibContainer') {
-						var sheetMenuPaths = getPath(treeResult).filter(i =>{
+						var sheetMenuPaths = utils.getPath(treeResult).filter(i =>{
 							//console.log(i);
 							var test = i.endsWith('masterItem.id') || i.endsWith('masterItemId');
 							return test;
 						});
-						var sheetMenuMasterItemIds = getValuesFromPaths(treeResult, sheetMenuPaths);
+						var sheetMenuMasterItemIds = utils.getValuesFromPaths(treeResult, sheetMenuPaths);
 						var sheetMenuMasterItems = Object.entries(sheetMenuMasterItemIds).filter(j => {return j[1] !== ""});
 						//console.log(sheetMenuMasterItems);
 						
@@ -135,13 +75,13 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], functi
 				.then(tree => {
 					//go thru each object and find references to qLibraryId
 //					console.log(tree);
-					var masterItemPaths = getPath(tree).filter(i =>{
+					var masterItemPaths = utils.getPath(tree).filter(i =>{
 						//console.log(i);
 						var test = i.includes('qLibraryId');
 						//console.log(test);
 						return test;
 					});
-					var masterItemIDs = getValuesFromPaths(tree, masterItemPaths);
+					var masterItemIDs = utils.getValuesFromPaths(tree, masterItemPaths);
 					var masterItemsTemp = Object.entries(masterItemIDs).filter(j => {return j[1] !== ""});
 					var masterItem;
 					//console.log(masterItemsList);
@@ -186,8 +126,8 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], functi
 					//console.log("The following master items are found in the "+vis.type+" "+visId+":");
 					//console.log(masterItems);
 					
-					var expressionsPaths = getPath(tree).filter(i => {return i.endsWith('.qDef') || i.endsWith('qCond.qv') || i.endsWith('qMsg.qv')}); 
-					var expressionsObj = getValuesFromPaths(tree, expressionsPaths);
+					var expressionsPaths = utils.getPath(tree).filter(i => {return i.endsWith('.qDef') || i.endsWith('qCond.qv') || i.endsWith('qMsg.qv')}); 
+					var expressionsObj = utils.getValuesFromPaths(tree, expressionsPaths);
 					var expressionsTemp = Object.entries(expressionsObj).filter(j => {return j[1] !== ""});
 					
 					var masterItemsFromExp = [];
