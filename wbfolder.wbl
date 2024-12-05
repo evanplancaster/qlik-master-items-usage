@@ -1,5 +1,5 @@
 Master_Item_Usage.qext;
-main.js;
+Master_Item_Usage.js;
 css/style.css;
 templates/main.ng.html;
 templates/confirm_template.html
