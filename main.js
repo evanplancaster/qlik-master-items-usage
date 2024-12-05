@@ -1,4 +1,4 @@
-define(["qlik", "text!./Master_Item_Usage.css", "text!./Master_Item_Usage.ng.html"], function(qlik, cssContent, html) {
+define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html"], function(qlik, cssContent, html) {
     "use strict";
 
     // Add CSS to the head
