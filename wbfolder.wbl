@@ -3,3 +3,6 @@ Master_Item_Usage.js;
 css/style.css;
 templates/main.ng.html;
 templates/confirm_template.html
+lib/utilities.js
+lib/qlik_data.js
+lib/table_ui.js
