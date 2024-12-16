@@ -1,4 +1,17 @@
-define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html", "./lib/qlik_data", "./lib/table_ui"], function(qlik, cssContent, html, qlik_data, table_ui) {
+define(["qlik", 
+	"text!./assets/css/style.css", 
+	"text!./main-template.ng.html", 
+	"./assets/js/qlik_data", 
+	"./assets/js/table_ui", 
+	"./components/items-usage-table/items-usage-table-directive",
+	"./components/items-usage-table/table-header/table-header-directive",
+	"./components/items-usage-table/table-data/table-data-directive"
+], 
+	function(qlik, 
+		cssContent, 
+		html, 
+		qlik_data, 
+		table_ui) {
     "use strict";
 
     // Add CSS to the head
@@ -19,6 +32,24 @@ define(["qlik", "text!./css/style.css", "text!./templates/main.ng.html", "./lib/
 			var dataService = qlik_data(app, $scope);
 			var tableUiService = table_ui($scope);
 			
+			$scope.usedColumns = [
+				{fieldName: 'sheetId', displayName: 'Sheet ID'}, 
+				{fieldName: 'sheetName', displayName: 'Sheet Name'}, 
+				{fieldName: 'sheetStatus', displayName: 'Sheet Status'}, 
+				{fieldName: 'vizId', displayName: 'Object ID'}, 
+				{fieldName: 'vizType', displayName: 'Object Type'}, 
+				{fieldName: 'name', displayName: 'Master Item Name'},
+				{fieldName: 'id', displayName: 'Master Item ID'},
+				{fieldName: 'type', displayName: 'Master Item Type'}
+			];
+			$scope.unUsedColumns = [
+				{fieldName: 'vizId', displayName: 'Object ID'}, 
+				{fieldName: 'vizType', displayName: 'Object Type'}, 
+				{fieldName: 'name', displayName: 'Master Item Name'},
+				{fieldName: 'id', displayName: 'Master Item ID'},
+				{fieldName: 'type', displayName: 'Master Item Type'}
+			];
+
 			//Create a Master Items List and then...
 			dataService.createMasterItemsList().then(masterItemsList => {
 				dataService.getSheets()

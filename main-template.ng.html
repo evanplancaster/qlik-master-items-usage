@@ -1,0 +1,43 @@
+<div qv-extension style="height: 100%; position: relative; overflow: auto;" class="ng-scope">
+	<lui-tab-view id="usage_tabs">
+		<lui-tabset>
+			<lui-tab ref="inUse">Master Items In Use</lui-tab>
+			<lui-tab ref="notInUse">Master Items Not In Use</lui-tab>
+			<lui-tab ref="howTo">How-To/Purpose</lui-tab>	
+		</lui-tabset>
+		<lui-tab-content ref="inUse" class="ext-tab-content">
+			<items_usage_table columns="usedColumns" show-delete-col="false"></items_usage_table>
+		</lui-tab-content>
+		
+		<lui-tab-content ref="notInUse" class="ext-tab-content">
+			<items_usage_table columns="unUsedColumns" show-delete-col="true"></items_usage_table>
+		</lui-tab-content>
+		<lui-tab-content ref="howTo" class="ext-tab-content">
+			<br>
+			<h2>Purpose of this extension</h2>
+			<p>Want to know every place a master dimension or measure is used? Want to know whether a master dimension or measure is even used at all?
+				This extension will quickly answer those questions for you.</p>
+			<br>
+			<h2>How To Use</h2>
+			<p>You can use the icons at the top of each column to search and sort by sheet name/ID, object type/ID, or master item name/ID/type.</p>
+			<p>Use the tabs at the top to flip between used and unused master items.</p>
+			<p>On the tab for "Master Items Not In Use", you can individually or bulk select items, then delete all selected master items with the click of a button.</p>
+		</lui-tab-content>
+	</lui-tab-view>
+
+<!--
+	<div class="lui-modal-background"></div>
+	<div class="lui-dialog" style="width: 400px;">
+		<div class="lui-dialog__header">
+			<div class="lui-dialog__title">Dialog title</div>
+		</div>
+		<div class="lui-dialog__body">
+			You are about to delete the following master items. This action cannot be undone. Please confirm.
+		</div>
+		<div class="lui-dialog__footer">
+			<button class="lui-button  lui-dialog__button">Cancel</button>
+			<button class="lui-button  lui-dialog__button close-button">Delete</button>
+		</div>
+	</div>
+-->
+</div>

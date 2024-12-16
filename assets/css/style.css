@@ -1,4 +1,4 @@
-.master_item_usage td, .master_item_usage th, .master_item_nonusage td, .master_item_nonusage th  {
+.master_item_usage td, .master_item_usage th  {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -8,23 +8,23 @@
   user-select: all;
 }
 
-.master_item_usage th, .master_item_nonusage th {
+.master_item_usage th {
   position: sticky;
   top: 40px;
   background-color: darkgray;
   color: white;
 }
 
-.master_item_usage tr:nth-child(even), .master_item_nonusage tr:nth-child(even){background-color: #f2f2f2;}
+.master_item_usage tr:nth-child(even){background-color: #f2f2f2;}
 
-.master_item_usage tr:hover, .master_item_nonusage tr:hover {background-color: #ddd;}
+.master_item_usage tr:hover {background-color: #ddd;}
 
-.master_item_usage .searchbar, .master_item_nonusage .searchbar {
+.master_item_usage .searchbar {
     position: sticky;
     top: 45px;
 }
 
-.master_item_usage .searchbar textarea, .master_item_nonusage .searchbar textarea {
+.master_item_usage .searchbar textarea {
   display: inline-block;
   resize: none;
   border-color: transparent;
@@ -33,24 +33,24 @@
   width: 85%;
 }
 
-.master_item_usage .searchbar .lui-icon, .master_item_nonusage .searchbar .lui-icon {
+.master_item_usage .searchbar .lui-icon {
   display: inline-block;
   width: 5%;
   color: #595959;
   vertical-align: 75%;
 }
 
-.master_item_usage a:link, a:visited, .master_item_nonusage a:link, a:visited {
+.master_item_usage a:link, a:visited {
   text-decoration: none;
   color: inherit;
 }
 
-.master_item_usage table, .master_item_nonusage table {
+.master_item_usage table {
   table-layout: fixed;
   min-width: 600px;
 }
 
-.master_item_usage .word-break, .master_item_nonusage .word-break {
+.master_item_usage .word-break {
     word-break: break-all;
 }
 
@@ -63,15 +63,15 @@
 	height: 38px;
 }
 
-.master_item_usage .lui-tab, .master_item_nonusage .lui-tab {
+.master_item_usage .lui-tab {
     background-color: rgba(255, 255, 255, 1);
 }
 
-.master_item_usage .lui-tab:hover, .master_item_nonusage .lui-tab:hover {
+.master_item_usage .lui-tab:hover {
     background-color: rgba(0, 0, 0, 0.03);
 }
 
-.master_item_usage .sort_icon_div, .master_item_nonusage .sort_icon_div {
+.master_item_usage .sort_icon_div {
     float:right;
 }
 

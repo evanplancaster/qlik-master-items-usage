@@ -1,0 +1,25 @@
+<tr>
+    <th ng-repeat="col in columns">
+        <span ng-click="sortBy(col.fieldName)">{{col.displayName}} &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, col.fieldName)"></span> 
+        <div class="sort_icon_div">
+            <span class="lui-icon  lui-icon--up-down" ng-click="sortBy(col.fieldName)" ng-show="propertyName !== col.fieldName"></span>
+            <span class="lui-icon  lui-icon--triangle-top" ng-click="sortBy(col.fieldName)" ng-show="propertyName === col.fieldName && reverse === false"></span>
+            <span class="lui-icon  lui-icon--triangle-bottom" ng-click="sortBy(col.fieldName)" ng-show="propertyName === col.fieldName && reverse === true"></span>
+        </div>
+        <div class="searchbar searchbar_{{col.fieldName}}" hidden>
+            <textarea rows="1" ng-model="searchResults[col.fieldName]"></textarea>
+            <span class="lui-icon lui-icon--close" ng-click="searchResults[col.fieldName]=''" ng-show="searchResults[col.fieldName].length"></span>
+        </div>
+    </th>
+    <th ng-if="showDeleteCol">
+        <div ng-model="toBeDeleted">
+            <button class="lui-button lui-button--danger" ng-disabled="!itemsSelected()" ng-click="deleteMasterItems()">
+                Delete Selected
+            </button>
+            <button class="lui-button lui-button--info" ng-click="toggleAllChecks()">
+                <span ng-show="anyChecked">Clear All</span>
+                <span ng-show="!anyChecked">Select All</span>
+            </button>
+        </div>
+    </th>
+</tr>

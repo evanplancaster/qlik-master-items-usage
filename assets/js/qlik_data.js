@@ -80,7 +80,8 @@ define(["./utilities"], function(utils, s) {
 					//Want it to look like an array of objects, each looking like {"path": i[0], "id": i[1]}
 					var newRecord = {};
 					var masterItems = masterItemsTemp.map(item => {
-						newRecord = {
+						//var inUse =vis.sheetStatus === 'Private' ? false : true;
+                        newRecord = {
 							"id": item[1], 
 							"sheetId": vis.sheetId,
 							"sheetName": vis.sheetName,
