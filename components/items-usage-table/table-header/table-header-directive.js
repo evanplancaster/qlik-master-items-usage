@@ -7,5 +7,6 @@ define( ["qvangular", "jquery", "text!./table-header-template.ng.html"],
 				template: ngHeaderTemplate
 			}
 		});
+        
 	});
 	

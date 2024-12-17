@@ -1,5 +1,5 @@
-<tr ng-repeat="item in masterItemsData | filter:inUseFilter | orderBy:propertyName:reverse track by $index ">
-    <td ng-repeat="col in columns" ng-click="copy(item[col.fieldName])">
+<tr ng-repeat="item in items.data | orderBy:propertyName:reverse track by $index ">
+    <td ng-repeat="col in items.columns" ng-click="copy(item[col.fieldName])">
         {{item[col.fieldName]}}
     </td>       
     <td ng-if="showDeleteCol">

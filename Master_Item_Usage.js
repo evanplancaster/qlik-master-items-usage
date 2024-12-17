@@ -32,7 +32,10 @@ define(["qlik",
 			var dataService = qlik_data(app, $scope);
 			var tableUiService = table_ui($scope);
 			
-			$scope.usedColumns = [
+			$scope.inUse = {};
+			$scope.notInUse = {};
+
+			$scope.inUse.columns = [
 				{fieldName: 'sheetId', displayName: 'Sheet ID'}, 
 				{fieldName: 'sheetName', displayName: 'Sheet Name'}, 
 				{fieldName: 'sheetStatus', displayName: 'Sheet Status'}, 
@@ -42,9 +45,7 @@ define(["qlik",
 				{fieldName: 'id', displayName: 'Master Item ID'},
 				{fieldName: 'type', displayName: 'Master Item Type'}
 			];
-			$scope.unUsedColumns = [
-				{fieldName: 'vizId', displayName: 'Object ID'}, 
-				{fieldName: 'vizType', displayName: 'Object Type'}, 
+			$scope.notInUse.columns = [
 				{fieldName: 'name', displayName: 'Master Item Name'},
 				{fieldName: 'id', displayName: 'Master Item ID'},
 				{fieldName: 'type', displayName: 'Master Item Type'}
@@ -124,8 +125,10 @@ define(["qlik",
 							};
 						});
 						
-						console.log(recordsObj);
-						$scope.masterItemsData = recordsObj;
+						//console.log(recordsObj);
+						//$scope.masterItemsData = recordsObj;
+						$scope.notInUse.data = recordsObj.filter(i => {return tableUiService.notInUseFilter(i)});
+						$scope.inUse.data = recordsObj.filter(i => {return tableUiService.inUseFilter(i)});
 					});
 					
 				});

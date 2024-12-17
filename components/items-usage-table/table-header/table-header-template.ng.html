@@ -1,5 +1,5 @@
 <tr>
-    <th ng-repeat="col in columns">
+    <th ng-repeat="col in items.columns">
         <span ng-click="sortBy(col.fieldName)">{{col.displayName}} &nbsp;&nbsp;</span> <span class="lui-icon  lui-icon--search" ng-click="toggleSearch($event, col.fieldName)"></span> 
         <div class="sort_icon_div">
             <span class="lui-icon  lui-icon--up-down" ng-click="sortBy(col.fieldName)" ng-show="propertyName !== col.fieldName"></span>
